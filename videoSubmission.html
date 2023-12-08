@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Submissions</title>
+    <link rel="stylesheet" href="/videoSubmission.css">
+</head>
+<body>
+<section>
+    <h2>Video Submissions</h2>
+    <!-- Video Submission Form Stuff -->
+    <form action="/video/submit" method="post">
+        <label for="title">Video Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+        <label for="videoUrl">Video URL:</label>
+        <input type="text" id="videoUrl" name="videoUrl" required>
+        <button type="submit">Submit Video</button>
+    </form>
+    <hr>
+    <!-- List of Video Submissions Stuff -->
+    <!-- Use the class "video-list" to style the list -->
+    <div class="video-list">
+            <ul>
+                    <li>
+                        <h3>Title of Video</h3>
+                        <p>Description</p>
+                        <iframe width="560" height="315" src="{{this.videoUrl}}" frameborder="0" allowfullscreen></iframe>
+                        <!-- Vote Form Stuff, might need to be moved. Definitely needs to be refactored -->
+                        <form action="/video/vote" method="post">
+                            <input type="hidden" name="videoId" value="{{this.id}}">
+                            <button type="submit">Vote</button>
+                        </form>
+                    </li>
+            </ul>
+            <p>No video submissions available.</p>
+    </div>
+</section>
+</body>
+</html>
